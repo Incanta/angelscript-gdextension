@@ -1,0 +1,36 @@
+# Build artifacts
+*.o
+*.os
+*.obj
+*.so
+*.dll
+*.dylib
+*.lib
+*.a
+*.exp
+*.pdb
+.sconsign.dblite
+extension/.sconsign.dblite
+compile_commands.json
+.cache/
+
+# Godot
+demo/.godot/
+*.uid
+.godot/
+
+# Node / VS Code extension
+node_modules/
+vscode/out/
+vscode/dist/
+*.vsix
+
+# Editors / OS
+.vscode/settings.json
+.idea/
+*.swp
+.DS_Store
+
+# SCons build tree
+build/
+*.gen.cpp

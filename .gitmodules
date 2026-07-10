@@ -1,0 +1,7 @@
+[submodule "extension/godot-cpp"]
+	path = extension/godot-cpp
+	url = https://github.com/godotengine/godot-cpp.git
+	branch = 4.5
+[submodule "extension/angelscript"]
+	path = extension/angelscript
+	url = https://github.com/codecat/angelscript-mirror.git

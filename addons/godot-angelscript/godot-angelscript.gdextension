@@ -1,0 +1,26 @@
+[configuration]
+
+entry_symbol = "godot_angelscript_entrypoint"
+compatibility_minimum = "4.5"
+reloadable = true
+
+[icons]
+
+AngelScriptScript = "AngelScriptScript.svg"
+
+[libraries]
+
+linux.debug.x86_64 = "bin/libgodot-angelscript.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "bin/libgodot-angelscript.linux.template_release.x86_64.so"
+linux.debug.arm64 = "bin/libgodot-angelscript.linux.template_debug.arm64.so"
+linux.release.arm64 = "bin/libgodot-angelscript.linux.template_release.arm64.so"
+windows.debug.x86_64 = "bin/libgodot-angelscript.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "bin/libgodot-angelscript.windows.template_release.x86_64.dll"
+windows.debug.arm64 = "bin/libgodot-angelscript.windows.template_debug.arm64.dll"
+windows.release.arm64 = "bin/libgodot-angelscript.windows.template_release.arm64.dll"
+macos.debug = "bin/libgodot-angelscript.macos.template_debug.universal.dylib"
+macos.release = "bin/libgodot-angelscript.macos.template_release.universal.dylib"
+android.debug.x86_64 = "bin/libgodot-angelscript.android.template_debug.x86_64.so"
+android.release.x86_64 = "bin/libgodot-angelscript.android.template_release.x86_64.so"
+android.debug.arm64 = "bin/libgodot-angelscript.android.template_debug.arm64.so"
+android.release.arm64 = "bin/libgodot-angelscript.android.template_release.arm64.so"

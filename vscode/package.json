@@ -1,0 +1,142 @@
+{
+  "name": "godot-angelscript",
+  "displayName": "Godot AngelScript",
+  "description": "Language support and debugging for AngelScript scripts in the Godot game engine (via the AngelScript GDExtension).",
+  "publisher": "incanta",
+  "version": "0.1.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:angelscript",
+    "onDebug"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "angelscript",
+        "aliases": [
+          "AngelScript",
+          "angelscript"
+        ],
+        "extensions": [
+          ".as"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "angelscript",
+        "scopeName": "source.angelscript",
+        "path": "./syntaxes/angelscript.tmLanguage.json"
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "angelscript"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "godot-angelscript",
+        "label": "Godot AngelScript",
+        "program": "./dist/debugAdapter.js",
+        "runtime": "node",
+        "languages": [
+          "angelscript"
+        ],
+        "configurationAttributes": {
+          "attach": {
+            "properties": {
+              "port": {
+                "type": "number",
+                "description": "TCP port of the Godot AngelScript tooling server.",
+                "default": 27500
+              },
+              "hostname": {
+                "type": "string",
+                "description": "Host of the Godot AngelScript tooling server.",
+                "default": "127.0.0.1"
+              },
+              "projectRoot": {
+                "type": "string",
+                "description": "Folder containing project.godot; used to map res:// paths to disk. Defaults to the workspace folder that contains project.godot."
+              }
+            }
+          }
+        },
+        "initialConfigurations": [
+          {
+            "type": "godot-angelscript",
+            "request": "attach",
+            "name": "Attach to running Godot game",
+            "port": 27500,
+            "hostname": "127.0.0.1",
+            "projectRoot": "${workspaceFolder}"
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "Godot AngelScript: Attach to running Godot game",
+            "description": "Attach the AngelScript debugger to a running Godot game that hosts the tooling server.",
+            "body": {
+              "type": "godot-angelscript",
+              "request": "attach",
+              "name": "Attach to running Godot game",
+              "port": 27500,
+              "hostname": "127.0.0.1",
+              "projectRoot": "^\"\\${workspaceFolder}\""
+            }
+          }
+        ]
+      }
+    ],
+    "configuration": {
+      "title": "Godot AngelScript",
+      "properties": {
+        "godotAngelscript.enginePort": {
+          "type": "number",
+          "default": 27500,
+          "description": "TCP port of the Godot AngelScript tooling server the language server connects to."
+        },
+        "godotAngelscript.engineHost": {
+          "type": "string",
+          "default": "127.0.0.1",
+          "description": "Host of the Godot AngelScript tooling server the language server connects to."
+        },
+        "godotAngelscript.projectRoot": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the folder containing project.godot, used to map res:// paths to disk. When empty, the workspace folders are searched for project.godot."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/protocol-smoke.mjs",
+    "vscode:prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@vscode/debugadapter": "^1.68.0",
+    "@vscode/debugprotocol": "^1.68.0",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.5.0"
+  }
+}
